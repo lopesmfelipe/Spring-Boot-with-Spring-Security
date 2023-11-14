@@ -29,7 +29,7 @@ public class UserService implements UserDetailsService {
         user.setPassword(result.get(0).getPassword());
         for(UserDetailsProjection projection : result) {
             user.addRole(new Role(projection.getRoleId(), projection.getAuthority()));
-        }
+         }
         return user;
     }
 }

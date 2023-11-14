@@ -64,14 +64,21 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles;
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void addRole(Role role) {
+        roles.add(role);
     }
 
     @Override
-    public String getPassword() {
-        return null;
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles;
     }
 
     @Override
@@ -99,13 +106,6 @@ public class User implements UserDetails {
         return true;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void addRole(Role role) {
-        roles.add(role);
-    }
 
     public boolean hasRole(String roleName) {
         for (Role role : roles) {
